@@ -8,7 +8,7 @@
 
 ## How to contribute ? 🤝
 - If you have already registered for the initiative , then you can safely skip to **Project Submission**
-- If you didn't register yet, it's not late to do that. You can sumbit your registarion through [this form](forms.google.com)
+- If you didn't register yet, it's not late to do that. You can submit your registration through [this form](forms.google.com)
 
 ## Project Submission 📋
 - In order to submit your Draft / Final solution , you will need to meet certain conditions :
