@@ -10,7 +10,7 @@
 - If you have already registered for the initiative , then you can safely skip to [Projects Submission](Algerian-Tech-Makers/Sabaak-Initiative/edit/main/README#Projects_Submission) 
 - If you didn't register yet, it's not late to do that. You can sumbit your registarion through [this form](forms.google.com)
 
-## Projects Submision 
+## Projects Submission 
 - In order to submit your Draft / Final solution , you will need to meet certain conditions :
 1. The project title must contain the team name + the project name.
 2. Only the team leader can submit the solution on behalf of his team members.
