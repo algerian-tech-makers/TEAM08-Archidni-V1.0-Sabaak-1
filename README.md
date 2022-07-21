@@ -7,10 +7,10 @@
 - Our initiative is directed to Muslim youth to contribute to building their society and facilitating the conduct of their affairs in a #voluntary framework🔥 and because many lived what the West imposes on us of immorality and things against our religion, Disney cartoons, many code editors, various production companies.
 
 ## How to contribute ? 🤝
-- If you have already registered for the initiative , then you can safely skip to [Projects Submission](Algerian-Tech-Makers/Sabaak-Initiative/edit/main/README#Project_Submission) 
+- If you have already registered for the initiative , then you can safely skip to **Project Submission**
 - If you didn't register yet, it's not late to do that. You can sumbit your registarion through [this form](forms.google.com)
 
-## Project_Submission 📋
+## Project Submission 📋
 - In order to submit your Draft / Final solution , you will need to meet certain conditions :
 1. The project title must contain the team name + the project name.
 2. Only the team leader can submit the solution on behalf of his team members.
