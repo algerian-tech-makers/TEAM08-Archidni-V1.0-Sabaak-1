@@ -22,8 +22,8 @@
 2. Create a new folder wih with the desired team name under the `Projects` directory.
 3. Add your solution .
 4. Create a pull request.
-5. Our responsible will review your submission for any issues,
-6. If your submission meets the conditions, it will be reviewd by our Jury.
+5. Our responsible will review your submission for any issues.
+6. If your submission meets the conditions, the pull request will be merged and reviewd by our Jury.
 
 ## Reach out to us 📝
 - If you still have any questions , you can reach out to us through [The Algerian Tech Makers Page](https://www.facebook.com/Algeriantechmakersdz2021)
