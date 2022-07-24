@@ -1,10 +1,10 @@
 # Sabaak Initiative 💻
 
 ## What is that ❓
-- It is a programming hackathon that will work on a group of mini-projects that will be under the supervision of seniors in the technical field for follow-up and guidance 💪
+- It is a programming hackathon that will work on a group of mini-projects under the supervision of seniors in the technical field for follow-up and guidance 💪
 
 ## What for 💡
-- Our initiative is directed to Muslim youth to contribute to building their society and facilitating the conduct of their affairs in a #voluntary framework🔥 and because many lived what the West imposes on us of immorality and things against our religion, Disney cartoons, many code editors, various production companies.
+This initiative is a step toward uniting Muslim programmers from around the world to uphold their faith, make a difference in their societies and reject discrimination and the values imposed by the west through technology.
 
 ## How to contribute 🤝
 - If you have already registered for the initiative , then you can safely skip to **Project Submission**
