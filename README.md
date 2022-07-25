@@ -28,4 +28,4 @@ This initiative is a step toward uniting Muslim programmers from around the worl
 ## Reach out to us 📝
 - If you still have any questions , you can reach out to us through [The Algerian Tech Makers Page](https://www.facebook.com/Algeriantechmakersdz2021)
 
-### Happy Hacking :)
+### Happy Hacking ^_^
