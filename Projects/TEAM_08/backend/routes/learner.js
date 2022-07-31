@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     res.json({mssg: 'POST new learner'});
-})
+});
 
 router.delete('/:id', (req, res) => {
     res.json({mssg: 'DELETE learner by id'});
