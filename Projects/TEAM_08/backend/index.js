@@ -16,8 +16,9 @@ app.use((req, res, next) => {
 });
 
 
-// api middleware
-app.use('/api/learners', require('./routes/learner'));
+// APIs
+app.use('/api/students', require('./routes/students'));
+app.use('/api/*', (req, res) => { res.status(404).json({ mssg: 'API Not found' }); });
 
 
 // set port
