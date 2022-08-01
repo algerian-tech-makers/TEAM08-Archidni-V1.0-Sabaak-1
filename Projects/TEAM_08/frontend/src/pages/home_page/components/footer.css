@@ -1,0 +1,25 @@
+footer {
+  margin-top: 40px;
+  height: 60px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer div:first-child {
+  font-size: 1.3rem;
+  padding-right: 10px;
+}
+
+footer div:last-child img {
+  width: 35px;
+  margin-left: 30px;
+  transition: transform 0.4s ease;
+}
+
+footer div:last-child img:hover {
+  background-color: #fff;
+  border-radius: 2px;
+  transform: scale(1.1);
+}

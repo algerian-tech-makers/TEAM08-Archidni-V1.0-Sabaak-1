@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding-block-start: 150px;
+}
+
+body {
+  font-family: sans-serif;
+}
