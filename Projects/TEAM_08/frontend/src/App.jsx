@@ -12,6 +12,8 @@ import UserProfile from './pages/UserProfile';
 import Button from '@mui/material/Button';
 import Layout from './pages/Layout';
 import { Stack } from '@mui/material';
+import Navbar from './components/Navbar';
+import Searchbar from './components/Searchbar';
 
 function App() {
   // just a simple example to test routes
@@ -41,6 +43,7 @@ function App() {
           </Button>
         ))}
       </Stack>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Layout />}>
