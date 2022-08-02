@@ -30,7 +30,7 @@ function App() {
   ];
   return (
     <>
-      <Stack direction="row" justifyContent="center">
+      {/* <Stack direction="row" justifyContent="center">
         {pages.map((page, index) => (
           <Button
             key={index}
@@ -42,7 +42,7 @@ function App() {
             {page.label}
           </Button>
         ))}
-      </Stack>
+      </Stack> */}
       <Navbar />
 
       <Routes>
