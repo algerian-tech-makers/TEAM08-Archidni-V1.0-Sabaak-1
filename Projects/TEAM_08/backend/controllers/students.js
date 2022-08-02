@@ -88,7 +88,6 @@ exports.addStudent = async (req, res) => {
     }
 };
 
-
 // update student in database
 exports.updateStudent = async (req, res) => {
     try {

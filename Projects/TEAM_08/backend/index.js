@@ -1,5 +1,5 @@
 const express = require('express');
-
+const bodyParser = require('body-parser')
 
 // create app
 const app = express();
@@ -8,6 +8,8 @@ const app = express();
 // add middleware express.json()
 app.use(express.json());
 
+// For parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
 // add middleware to parse request body
 app.use((req, res, next) => {
@@ -18,6 +20,8 @@ app.use((req, res, next) => {
 
 // APIs
 app.use('/api/students', require('./routes/students'));
+app.use('/api/schools', require('./routes/schools'));
+
 app.use('/api/*', (req, res) => { res.status(404).json({ mssg: 'API Not found' }); });
 
 
