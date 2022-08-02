@@ -11,6 +11,9 @@ import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
 import Button from '@mui/material/Button';
 import Layout from './pages/Layout';
+import { Stack } from '@mui/material';
+import Navbar from './components/Navbar';
+import Searchbar from './components/Searchbar';
 
 function App() {
   // just a simple example to test routes
@@ -27,17 +30,20 @@ function App() {
   ];
   return (
     <>
-      {pages.map((page, index) => (
-        <Button
-          key={index}
-          to={page.path}
-          component={Link}
-          variant="outlined"
-          sx={{ mx: 1 }}
-        >
-          {page.label}
-        </Button>
-      ))}
+      {/* <Stack direction="row" justifyContent="center">
+        {pages.map((page, index) => (
+          <Button
+            key={index}
+            to={page.path}
+            component={Link}
+            variant="outlined"
+            sx={{ mx: 1 }}
+          >
+            {page.label}
+          </Button>
+        ))}
+      </Stack> */}
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Layout />}>
