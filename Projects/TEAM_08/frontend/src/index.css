@@ -10,3 +10,10 @@ body {
 code {
   font-family: 'IBM Plex Sans Arabic', sans-serif;
 }
+
+/* Utilities class */
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
