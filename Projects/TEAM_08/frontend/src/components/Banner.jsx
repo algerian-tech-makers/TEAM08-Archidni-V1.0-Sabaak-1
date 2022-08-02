@@ -1,17 +1,25 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 import React from 'react';
 import BannerImg from '../assets/images/banner.png';
+import { useNavigate } from 'react-router-dom';
+import styled from '@emotion/styled';
+
+const RoundedButton = styled(Button)(() => ({
+  fontSize: '1.7rem',
+  marginBlock: '2rem',
+  borderWidth: '2px',
+  borderRadius: '50px',
+  flex: 1,
+}));
+
 export default function Banner() {
+  const navigate = useNavigate();
   return (
     <Box bgcolor="#f9f9f9">
-      <Stack
-        direction="row"
-        sx={{ py: 6 }}
-        justifyContent="space-evenly"
-        alignItems="center"
-      >
+      <Stack direction="row" justifyContent="space-evenly" alignItems="center">
         <Box
           sx={{
+            my: 6,
             color: '#1f2b3e',
             maxWidth: '60ch',
           }}
@@ -42,35 +50,17 @@ export default function Banner() {
             البَرَرَةِ، والذي يقرَأُ القرآنَ ويَتَتَعْتَعُ فيه وهو عليه شَاقٌ
             لَهُ أجْرَانِ».
           </Typography>
-          <Stack direction="row" justifyContent="stretch">
-            <Button
+          <Stack direction="row" gap={2}>
+            <RoundedButton
               variant="contained"
               color="success"
-              sx={{
-                fontSize: '1.7rem',
-                my: '2rem',
-                px: '3rem',
-                borderRadius: 50,
-                flex: 1,
-              }}
+              onClick={() => navigate('/schools')}
             >
               أَقْرَب مَدْرَسَةٍ
-            </Button>
-            <Button
-              variant="outlined"
-              color="success"
-              sx={{
-                fontSize: '1.7rem',
-                my: '2rem',
-                px: '3rem',
-                mx: 2,
-                borderWidth: '2px',
-                borderRadius: 50,
-                flex: 1,
-              }}
-            >
+            </RoundedButton>
+            <RoundedButton variant="outlined" color="success">
               اِدْعَمْنَا
-            </Button>
+            </RoundedButton>
           </Stack>
         </Box>
         <Box
