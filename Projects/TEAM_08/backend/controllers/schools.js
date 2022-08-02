@@ -109,13 +109,6 @@ const updateSchoolAdmin = (req, res) => {
          .catch( err => {
             res.status(500).json({result : false});
          })
-
-
-   // db.query(`UPDATE schools SET 
-   //             admin_name = ,
-   //             admin_email = ,
-   //             admin_password = 
-   //          WHERE school_id = '${req.params.id}'`);
 }
 
 module.exports = {
