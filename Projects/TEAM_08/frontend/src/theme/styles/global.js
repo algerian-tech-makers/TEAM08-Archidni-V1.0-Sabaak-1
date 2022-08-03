@@ -7,11 +7,4 @@ export const globalStyles = css`
       color: #121212;
     }
   }
-
-  [data-theme="dark"] {
-    body {
-      background-color: #121212;
-      color: #fff;
-    }
-  }
 `;

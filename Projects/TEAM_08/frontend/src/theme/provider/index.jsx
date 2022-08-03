@@ -1,17 +1,23 @@
 import { useTheme } from "next-themes";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { darkTheme, globalStyles, lightTheme } from "..";
+import { lightTheme } from "..";
+import { globalStyles } from "../styles/global";
 import { useEffect, useState } from "react";
 
 const MUIThemeProvider = ({ children }) => {
   const { resolvedTheme } = useTheme();
-  const [currentTheme, setCurrentTheme] = useState(darkTheme);
+  const [currentTheme, setCurrentTheme] = useState(lightTheme);
+
+  /**
+   * @Mehdi
+   * @Feature
+   * @ToDO    : the usEffect hook will check the state of the theme- and then will accordingly
+   * --------- update the theme throught the website
+   */
 
   useEffect(() => {
-    resolvedTheme === "light"
-      ? setCurrentTheme(lightTheme)
-      : setCurrentTheme(darkTheme);
+    setCurrentTheme(lightTheme);
   }, [resolvedTheme]);
 
   return (

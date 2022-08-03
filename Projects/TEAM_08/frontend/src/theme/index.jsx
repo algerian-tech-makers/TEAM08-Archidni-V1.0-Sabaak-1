@@ -6,14 +6,7 @@ export const lightTheme = createTheme({
     secondary: { main: "#2a48f3" },
     mode: "light",
   },
-});
-
-export const darkTheme = createTheme({
-  palette: {
-    primary: { main: "#9147FF" },
-    secondary: { main: "#2a48f3" },
-    mode: "dark",
+  color: {
+    test: "red",
   },
 });
-
-export { globalStyles } from "./styles/global";

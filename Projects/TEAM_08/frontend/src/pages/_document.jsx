@@ -39,13 +39,20 @@ export default class MyDocument extends Document {
     return {
       ...initialProps,
       emotionStyleTags,
+      // locale: ctx?.locale || "ar"
     };
   }
 
   render() {
     const { emotionStyleTags } = this.props;
     return (
-      <Html>
+      <Html
+      /**
+       * @Mehdi
+       * @ToDo add support for RTL
+       * @Feature dir={this.props.locale === "ar" ? "rtl" : "ltr"}
+       */
+      >
         <Head>
           <link
             rel="stylesheet"

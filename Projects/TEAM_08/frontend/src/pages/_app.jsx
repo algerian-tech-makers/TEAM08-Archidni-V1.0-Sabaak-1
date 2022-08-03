@@ -1,5 +1,6 @@
 import { appWithTranslation } from "next-i18next";
 import PageProvider from "../theme/provider/page.provider";
+import "../styles/globals.css";
 
 function App({ Component, pageProps, emotionCache }) {
   return (

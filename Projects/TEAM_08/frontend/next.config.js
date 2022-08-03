@@ -5,11 +5,23 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   i18n,
+  compiler: {
+    styledComponents: true,
+  },
   async rewrites() {
     return [
       {
         source: "/",
-        destination: "/home/", 
+        destination: "/home/",
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/login",
+        destination: "/auth?tab=login",
+        permanent: true,
       },
     ];
   },

@@ -1,0 +1,37 @@
+{
+  "navbar": {
+    "home": "home",
+    "who-we-are": "who we are",
+    "services": "services",
+    "team": "team",
+    "contact-us": "contact us"
+  },
+  "conjunctions": {
+    "and": "and"
+  },
+  "buttons": {
+    "signup": "signup",
+    "login": "login"
+  },
+  "signup": {
+    "have-account": "already have an account?",
+    "terms-service": "terms of service",
+    "privacy-policy": "privacy policy",
+    "registration-clause": "By registering, I agree to "
+  },
+  "input": {
+    "email": "email",
+    "first-name": "first name",
+    "last-name": "last name",
+    "password": "password",
+    "confirm-password": "confirm password",
+    "school": "school",
+    "type": "type"
+  },
+  "banner": {
+    "value": "فَابَحَثَ عَنْهُ حَتَّى، {{break}} اَلْقُرْآن هُوَ نُورُ اَلْحَيَاةِ تُنِيرَ حَيَاتَكَ.",
+    "citation": " عن عائشة -رضي الله عنها- قالتْ: قالَ رسولُ اللهِ -صلى الله عليه    وسلم-: «الذي يقرَأُ القرآنَ وهو مَاهِرٌ به مع السَّفَرَةِ الكِرَامِ  البَرَرَةِ، والذي يقرَأُ القرآنَ ويَتَتَعْتَعُ فيه وهو عليه شَاقٌ لَهُ أجْرَانِ».",
+    "near-school": "أَقْرَب مَدْرَسَةٍ",
+    "support-us": "اِدْعَمْنَا"
+  }
+}
