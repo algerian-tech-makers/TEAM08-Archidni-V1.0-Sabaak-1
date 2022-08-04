@@ -8,6 +8,13 @@ require('dotenv').config();
 exports.login = async (req, res) => {
     const { email, password, role } = req.body;
 
+    if (!role)
+        return res.status(400).json({ mssg: 'Invalid role please enter a valid role' });
+    if (!email)
+        return res.status(400).json({ mssg: 'Invalid email please enter a valid email' });
+    if (!password)
+        return res.status(400).json({ mssg: 'Invalid password please enter a valid password' });
+
     // check the role of the user
     if (role === 'admin') {
         // check if email exists in admins table
@@ -95,6 +102,5 @@ exports.login = async (req, res) => {
 
         // return token
         return res.status(200).json({ token });
-    } else
-        return res.status(400).json({ mssg: 'Invalid role please enter a valid role' });
+    }
 };
