@@ -17,9 +17,6 @@ app.use((req, res, next) => {
 
 
 // not verify may get an issue
-// app.use('/api/students', require('./routes/students'));
-// app.use('/api/schools', require('./routes/schools'));
-// app.use('/api/admin', require('./routes/admin'));
 // app.use('/api/rate', require('./routes/rate'));
 
 // verify api work with no issue

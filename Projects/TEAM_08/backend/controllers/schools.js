@@ -30,7 +30,15 @@ exports.getSchoolById = async (req, res) => {
          WHERE school_id = ${req.params.id}`;
          const result = await db.query(query);
          res.status(200).json(result.rows[0]);
-      } catch (error) {
-         res.status(500).json({result: false});
+      } catch (err) {
+         res.status(500).json({
+            error: err.message
+         });
       }
 }
+
+
+// Get schools by user query
+exports.getSchoolsByQuery = async (req, res) => {
+   return res.status(200).json({ mssg: 'getSchoolsByQuery' });
+};
