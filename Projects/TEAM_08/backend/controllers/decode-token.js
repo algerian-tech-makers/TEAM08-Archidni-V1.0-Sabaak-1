@@ -9,7 +9,7 @@ exports.decodeToken = async (req, res) => {
     // check if token is valid
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        return res.status(200).json({ decoded });
+        return res.status(200).json(decoded);
     } catch (err) {
         return res.status(400).json({ mssg: 'Token is invalid' });
     }
