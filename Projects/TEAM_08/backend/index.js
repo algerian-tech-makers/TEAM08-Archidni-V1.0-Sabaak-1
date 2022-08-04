@@ -17,6 +17,10 @@ app.use((req, res, next) => {
 
 
 // APIs
+app.use('/api/students', require('./routes/students'));
+app.use('/api/schools', require('./routes/schools'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/rate', require('./routes/rate'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/*', (req, res) => { res.status(404).json({ mssg: 'API Not found' }); });
 
