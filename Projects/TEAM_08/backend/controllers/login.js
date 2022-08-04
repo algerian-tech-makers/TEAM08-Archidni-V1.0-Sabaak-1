@@ -49,7 +49,7 @@ exports.login = async (req, res) => {
             id: studentRow.rows[0].student_id,
             username: studentRow.rows[0].student_name,
             email: studentRow.rows[0].student_email,
-            gander: studentRow.rows[0].student_gander,
+            gender: studentRow.rows[0].student_gender,
             avatar_url: studentRow.rows[0].student_avatar_url,
             school_id: studentRow.rows[0].student_school_id,
             role: 'student' },
