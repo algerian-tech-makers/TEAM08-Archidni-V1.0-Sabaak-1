@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 // app.use('/api/rate', require('./routes/rate'));
 
 // verify api work with no issue
+app.use('/api/update', require('./routes/update'));
 app.use('/api/fetch', require('./routes/fetch'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/*', (req, res) => { res.status(404).json({ mssg: 'API Not found' }); });
