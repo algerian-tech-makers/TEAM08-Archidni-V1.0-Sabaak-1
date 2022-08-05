@@ -77,6 +77,11 @@ exports.login = async (req, res) => {
         if (!isPasswordCorrect)
             return res.status(400).json({ mssg: 'Password is incorrect' });
 
+        // get all students in the school
+        const students = await db.query('SELECT * FROM students WHERE student_school_id = $1', [schoolRow.rows[0].school_id]);
+
+        // get school location
+        const wilaya = await db.query('SELECT name FROM wilaya WHERE id = $1', [schoolRow.rows[0].school_wilaya_id]); 
         // create token
         const token = jwt.sign({
             id: schoolRow.rows[0].school_id,
@@ -90,7 +95,8 @@ exports.login = async (req, res) => {
             open_at: schoolRow.rows[0].open_at,
             close_at: schoolRow.rows[0].close_at,
             paid: schoolRow.rows[0].school_paid === 'true' ? true : false,
-            location: 1,
+            location: wilaya.rows[0].name,
+            students_number: students.rows.length,
             admin: {
                 name: schoolRow.rows[0].school_admin_name,
                 email: schoolRow.rows[0].school_admin_email,
