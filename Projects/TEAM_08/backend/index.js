@@ -16,6 +16,14 @@ app.use((req, res, next) => {
 });
 
 
+// Access-Control-Allow-Origin
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
+
 // not verify may get an issue
 // app.use('/api/rate', require('./routes/rate'));
 

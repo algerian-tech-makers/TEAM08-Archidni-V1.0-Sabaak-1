@@ -29,7 +29,7 @@ exports.getStudentById = async (req, res) => {
         FROM students WHERE student_id = $1`, [req.params.id]);
         // return response
         if (student.rows.length == 1)
-            return res.status(200).json(student.rows);
+            return res.status(200).json(student.rows[0]);
         else
             return res.status(400).json({
                 error: "Student not found id: " + req.params.id

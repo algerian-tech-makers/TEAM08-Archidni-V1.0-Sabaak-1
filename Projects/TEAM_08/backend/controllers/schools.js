@@ -10,8 +10,29 @@ exports.getAllSchools = async (req, res) => {
       const query = `
          SELECT school_id, open_at, close_at, paid, school_facebook, school_url, school_desc, 
          school_teachers_number, school_phone school_admin_name, school_admin_email, 
-         school_avatar_url, school_name, school_location_lat, school_location_long FROM schools`;
+         school_avatar_url, school_name, school_wilaya_id FROM schools`;
       const schoolRows = await db.query(query);
+
+      // get wilaya name for each school
+      for (let i = 0; i < schoolRows.rows.length; i++) {
+         const query = `SELECT name FROM wilaya WHERE id = ${schoolRows.rows[i].school_wilaya_id}`;
+         const wilayaRows = await db.query(query);
+         schoolRows.rows[i].wilaya = await wilayaRows.rows[0].name;
+
+         // remove wilaya_id from school object
+         delete schoolRows.rows[i].school_wilaya_id;
+      }
+
+      // add rate to each school
+      for (let i = 0; i < schoolRows.rows.length; i++) {
+         schoolRows.rows[i].rate = await require('./rate').getRate(schoolRows.rows[i].school_id);
+      }
+
+      // add comments to each school   
+      for (let i = 0; i < schoolRows.rows.length; i++) {
+         schoolRows.rows[i].comments = await require('./comments').getComments(schoolRows.rows[i].school_id);
+      }
+
       res.status(200).json(schoolRows.rows);
    } catch (err) {
       res.status(500).json({
@@ -26,9 +47,23 @@ exports.getSchoolById = async (req, res) => {
          const query = `
          SELECT school_id, open_at, close_at, paid, school_facebook, school_url, school_desc, 
          school_teachers_number, school_phone school_admin_name, school_admin_email, 
-         school_avatar_url, school_name, school_location_lat, school_location_long FROM schools
+         school_avatar_url, school_name, school_wilaya_id FROM schools
          WHERE school_id = ${req.params.id}`;
+
          const result = await db.query(query);
+         
+         // get wilaya name for the school
+         result.rows[0].wilaya = await require('./wilaya').getWilayaById(result.rows[0].school_wilaya_id);
+
+         // remove wilaya_id from school object
+         delete result.rows[0].school_wilaya_id;
+
+         // add rate to the school
+         result.rows[0].rate = await require('./rate').getRate(result.rows[0].school_id);
+
+         // add comments to the school
+         result.rows[0].comments = await require('./comments').getComments(result.rows[0].school_id);
+         
          res.status(200).json(result.rows[0]);
       } catch (err) {
          res.status(500).json({
@@ -138,12 +173,15 @@ exports.updateSchoolById = async (req, res) => {
       // add where clause
       query += ` WHERE school_id = ${id}`;
 
+      // get all students in the school
+      const students = await db.query('SELECT * FROM students WHERE student_school_id = $1', [id]);
+
       // update school
       try {
          const schoolRow = await db.query(query);
          // make token
          const token = jwt.sign({
-               id: schoolRow.rows[0].school_id,
+            id: schoolRow.rows[0].school_id,
             name: schoolRow.rows[0].school_name,
             avatar_url: schoolRow.rows[0].school_avatar_url,
             teachers_nember: schoolRow.rows[0].school_teachers_number,
@@ -154,7 +192,10 @@ exports.updateSchoolById = async (req, res) => {
             open_at: schoolRow.rows[0].open_at,
             close_at: schoolRow.rows[0].close_at,
             paid: schoolRow.rows[0].school_paid === 'true' ? true : false,
-            location: 1,
+            location: await require('./wilaya').getWilayaById(school_wilaya_id),
+            students_number: students.rows.length,
+            rate: await require('./rate').getRate(id),
+            comments: await require('./comments').getComments(id),
             admin: {
                   name: schoolRow.rows[0].school_admin_name,
                   email: schoolRow.rows[0].school_admin_email,
