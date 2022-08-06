@@ -24,6 +24,25 @@ exports.signup = async (req, res) => {
         // get data from body
         const { email, password, username } = req.body;
 
+        // if email is empty
+        if (!email)
+            return res.status(400).json({ mssg: 'Email is required' });
+        // regex for email
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(email))
+            return res.status(400).json({ mssg: 'Plese enter a valid email' });
+        // if password is empty
+        if (!password)
+            return res.status(400).json({ mssg: 'Password is required' });
+        if (password.length < 6)
+            return res.status(400).json({ mssg: 'Password can not be less than 6 characters' });
+        // if username is empty
+        if (!username)
+            return res.status(400).json({ mssg: 'Username is required' });
+        // if username is less than 3 characters
+        if (username.length < 3)
+            return res.status(400).json({ mssg: 'Username can not be less than 3 characters' });
+
         // check if email exists in admins table
         const adminRow = await db.query('SELECT * FROM admins WHERE admin_email = $1', [email]);
         if (adminRow.rows.length > 0)
@@ -113,18 +132,28 @@ exports.signup = async (req, res) => {
         if (!phone)
             return res.status(400).json({ mssg: 'Please provide a phone number' });
         if (phone) {
-            const phoneRegex = /^0[0-9]{9}$/;
+            const phoneRegex = /^0[0-9][5|6|7]{8}$/;
             if (!phoneRegex.test(phone))
                 return res.status(400).json({ mssg: 'Please provide a valid phone number' });
         }
         if (!admin_name)
             return res.status(400).json({ mssg: 'Please provide an admin_name' });
+        if (admin_name.length < 3)
+            return res.status(400).json({ mssg: 'Admin_name must be at least 3 characters' });
         if (!admin_password)
             return res.status(400).json({ mssg: 'Please provide an admin_password' });
+        if (admin_password.length < 8)
+            return res.status(400).json({ mssg: 'Admin_password must be at least 8 characters' });
         if (!admin_email)
             return res.status(400).json({ mssg: 'Please provide an admin_email' });
+        // regex for email
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        if (!emailRegex.test(admin_email))
+            return res.status(400).json({ mssg: 'Please provide a valid email' });
         if (!school_name)
             return res.status(400).json({ mssg: 'Please provide a school_name' });
+        if (school_name.length < 10)
+            return res.status(400).json({ mssg: 'School_name must be at least 10 characters' });
 
         // check if email exists in students table
         const schoolRow = await db.query('SELECT * FROM schools WHERE school_admin_email = $1', [admin_email]);
@@ -150,7 +179,7 @@ exports.signup = async (req, res) => {
                 name: newSchool.rows[0].school_admin_name,
                 email: newSchool.rows[0].school_admin_email,
             }}, process.env.JWT_SECRET,
-            { expiresIn: '7d' });
+            { expiresIn: '1d' });
 
         // return token
         return res.status(200).json({ token });
