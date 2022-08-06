@@ -1,13 +1,9 @@
+import { wrapper } from "redux/store";
 import { appWithTranslation } from "next-i18next";
-import PageProvider from "../theme/provider/page.provider";
-import "../styles/globals.css";
 
-function App({ Component, pageProps, emotionCache }) {
-  return (
-    <PageProvider emotionCache={emotionCache}>
-      <Component {...pageProps} />
-    </PageProvider>
-  );
+import "styles/globals.css";
+
+function App({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
-
-export default appWithTranslation(App);
+export default wrapper.withRedux(appWithTranslation(App));

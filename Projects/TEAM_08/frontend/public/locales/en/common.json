@@ -4,7 +4,8 @@
     "who-we-are": "who we are",
     "services": "services",
     "team": "team",
-    "contact-us": "contact us"
+    "contact-us": "contact us",
+    "schools": "schools"
   },
   "conjunctions": {
     "and": "and"
@@ -17,7 +18,8 @@
     "have-account": "already have an account?",
     "terms-service": "terms of service",
     "privacy-policy": "privacy policy",
-    "registration-clause": "By registering, I agree to "
+    "registration-clause": "By registering, I agree to ",
+    "no-accoutn":"don't have an account?"
   },
   "input": {
     "email": "email",

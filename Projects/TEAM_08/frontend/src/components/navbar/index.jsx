@@ -1,20 +1,18 @@
-import React, { useTransition } from "react";
+import React from "react";
 import {
   AppBar,
-  Avatar,
   Box,
   Stack,
   Typography,
-  Button,
-  Link as MuiLink,
   IconButton,
   Toolbar,
+  Avatar,
 } from "@mui/material";
 import { publicItems } from "../../constants/navigation";
 import styled from "@emotion/styled";
-import NextLink from "next/link";
 import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
+
+import { Link } from "../Link";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -25,7 +23,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function Navbar() {
   const { t } = useTranslation();
-  const router = useRouter();
+
   return (
     <AppBar position="sticky">
       <StyledToolbar sx={{ paddingInline: { xs: "1rem", md: "4rem" } }}>
@@ -35,8 +33,12 @@ export default function Navbar() {
           color="inherit"
           gap={2}
           sx={{ textDecoration: "none" }}
+          component={Link}
+          href="/"
         >
-          {/* <Avatar alt="Logo" src={logo} sx={{ width: 50, height: 50 }} /> */}
+       
+
+          <Avatar alt="Logo" src={`/logo.png`} sx={{ width: 50, height: 50 }} />
           <Typography
             variant="h5"
             sx={{ display: { xs: "none", sm: "block" } }}
@@ -51,37 +53,38 @@ export default function Navbar() {
           sx={{ display: { xs: "none", lg: "flex" } }}
         >
           {publicItems.map(({ title, path }) => (
-            <MuiLink
+            <Link
               key={title}
               color="inherit"
-              component={NextLink}
               underline="none"
               sx={{ fontSize: "1.2rem" }}
               href={path}
             >
-              {t(title)}
-            </MuiLink>
+              {t(`navbar.${title}`)}
+            </Link>
           ))}
         </Stack>
         <Box>
-          <Button
+          <Link
             color="info"
             variant="contained"
             disableElevation
             sx={{ mx: { lg: 1 }, ml: { xs: "auto" } }}
-            onClick={() => router.push("/auth?tab=register")}
+            href="/auth?tab=signup"
+            as="button"
           >
             {t("buttons.signup")}
-          </Button>
-          <Button
+          </Link>
+          <Link
             color="error"
             variant="contained"
             disableElevation
             sx={{ mx: 1 }}
-            onClick={() => router.push("/auth?tab=login")}
+            as="button"
+            href="/auth?tab=login"
           >
             {t("buttons.login")}
-          </Button>
+          </Link>
           <IconButton
             color="inherit"
             sx={{ mx: 1, display: { xs: "inline-block", lg: "none" } }}

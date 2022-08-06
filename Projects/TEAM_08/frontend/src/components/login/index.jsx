@@ -1,10 +1,7 @@
-import { Typography, Link } from "@mui/material";
-import { SignupForm } from "../../components/form/signup";
-import Image from "next/image";
+import { Typography } from "@mui/material";
 import { useTranslation } from "next-i18next";
-import { LoginForm } from "../form/login";
-
-import NextLink from "next/link";
+import { LoginForm } from "../form/login-form";
+import { Link } from "../Link";
 
 export default function Login() {
   const { t } = useTranslation("common");
@@ -12,16 +9,14 @@ export default function Login() {
     <>
       <LoginForm translation={t} />
 
-      
-
       <Typography
         variant="body2"
         align="center"
         sx={{ mt: 3 }}
         color="text.test"
       >
-        {t("signup.have-account")}{" "}
-        <Link component={NextLink} variant="subtitle2" href="/">
+        {t("signup.no-account")}{" "}
+        <Link variant="subtitle2" href="/auth?tab=login">
           {t("buttons.login")}
         </Link>
       </Typography>
