@@ -10,8 +10,29 @@ exports.getAllSchools = async (req, res) => {
       const query = `
          SELECT school_id, open_at, close_at, paid, school_facebook, school_url, school_desc, 
          school_teachers_number, school_phone school_admin_name, school_admin_email, 
-         school_avatar_url, school_name, school_location_lat, school_location_long FROM schools`;
+         school_avatar_url, school_name, school_wilaya_id FROM schools`;
       const schoolRows = await db.query(query);
+
+      // get wilaya name for each school
+      for (let i = 0; i < schoolRows.rows.length; i++) {
+         const query = `SELECT name FROM wilaya WHERE id = ${schoolRows.rows[i].school_wilaya_id}`;
+         const wilayaRows = await db.query(query);
+         schoolRows.rows[i].wilaya = await wilayaRows.rows[0].name;
+
+         // remove wilaya_id from school object
+         delete schoolRows.rows[i].school_wilaya_id;
+      }
+
+      // add rate to each school
+      for (let i = 0; i < schoolRows.rows.length; i++) {
+         schoolRows.rows[i].rate = await require('./rate').getRate(schoolRows.rows[i].school_id);
+      }
+
+      // add comments to each school   
+      for (let i = 0; i < schoolRows.rows.length; i++) {
+         schoolRows.rows[i].comments = await require('./comments').getComments(schoolRows.rows[i].school_id);
+      }
+
       res.status(200).json(schoolRows.rows);
    } catch (err) {
       res.status(500).json({
