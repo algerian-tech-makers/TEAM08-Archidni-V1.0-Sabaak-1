@@ -47,9 +47,23 @@ exports.getSchoolById = async (req, res) => {
          const query = `
          SELECT school_id, open_at, close_at, paid, school_facebook, school_url, school_desc, 
          school_teachers_number, school_phone school_admin_name, school_admin_email, 
-         school_avatar_url, school_name, school_location_lat, school_location_long FROM schools
+         school_avatar_url, school_name, school_wilaya_id FROM schools
          WHERE school_id = ${req.params.id}`;
+
          const result = await db.query(query);
+         
+         // get wilaya name for the school
+         result.rows[0].wilaya = await require('./wilaya').getWilayaById(result.rows[0].school_wilaya_id);
+
+         // remove wilaya_id from school object
+         delete result.rows[0].school_wilaya_id;
+
+         // add rate to the school
+         result.rows[0].rate = await require('./rate').getRate(result.rows[0].school_id);
+
+         // add comments to the school
+         result.rows[0].comments = await require('./comments').getComments(result.rows[0].school_id);
+         
          res.status(200).json(result.rows[0]);
       } catch (err) {
          res.status(500).json({
