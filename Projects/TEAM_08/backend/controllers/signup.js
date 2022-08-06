@@ -56,12 +56,25 @@ exports.signup = async (req, res) => {
         // check if email password username and gender exist
         if (!email)
             return res.status(400).json({ mssg: 'Please provide an email' });
+        // regex for email
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        if (!emailRegex.test(email))
+            return res.status(400).json({ mssg: 'Please provide a valid email' });
         if (!password)
             return res.status(400).json({ mssg: 'Please provide a password' });
+        // if password is less than 8 characters
+        if (password.length < 8)
+            return res.status(400).json({ mssg: 'Password must be at least 8 characters' });
         if (!username)
             return res.status(400).json({ mssg: 'Please provide a username' });
+        // if username hase less than 3 characters
+        if (username.length < 3)
+            return res.status(400).json({ mssg: 'Username must be at least 3 characters' });
         if (!gender)
             return res.status(400).json({ mssg: 'Please provide a gender' });
+        // if gender is not male or female
+        if (gender !== 'male' || gender !== 'female')
+            return res.status(400).json({ mssg: 'Gender can be male or female' });
 
         // check if email exists in students table
         const studentRow = await db.query('SELECT * FROM students WHERE student_email = $1', [email]);
