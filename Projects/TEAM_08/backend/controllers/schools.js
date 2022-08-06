@@ -138,12 +138,15 @@ exports.updateSchoolById = async (req, res) => {
       // add where clause
       query += ` WHERE school_id = ${id}`;
 
+      // get all students in the school
+      const students = await db.query('SELECT * FROM students WHERE student_school_id = $1', [id]);
+
       // update school
       try {
          const schoolRow = await db.query(query);
          // make token
          const token = jwt.sign({
-               id: schoolRow.rows[0].school_id,
+            id: schoolRow.rows[0].school_id,
             name: schoolRow.rows[0].school_name,
             avatar_url: schoolRow.rows[0].school_avatar_url,
             teachers_nember: schoolRow.rows[0].school_teachers_number,
@@ -154,7 +157,10 @@ exports.updateSchoolById = async (req, res) => {
             open_at: schoolRow.rows[0].open_at,
             close_at: schoolRow.rows[0].close_at,
             paid: schoolRow.rows[0].school_paid === 'true' ? true : false,
-            location: 1,
+            location: await require('./wilaya').getWilayaById(school_wilaya_id),
+            students_number: students.rows.length,
+            rate: await require('./rate').getRate(id),
+            comments: await require('./comments').getComments(id),
             admin: {
                   name: schoolRow.rows[0].school_admin_name,
                   email: schoolRow.rows[0].school_admin_email,
