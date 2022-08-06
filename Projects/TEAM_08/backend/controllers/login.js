@@ -9,11 +9,14 @@ exports.login = async (req, res) => {
     const { email, password, role } = req.body;
 
     if (!role)
-        return res.status(400).json({ mssg: 'Invalid role please enter a valid role' });
+        return res.status(400).json({ mssg: 'Please enter a role' });
     if (!email)
-        return res.status(400).json({ mssg: 'Invalid email please enter a valid email' });
+        return res.status(400).json({ mssg: 'Email is required' });
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!emailRegex.test(email))
+        return res.status(400).json({ mssg: 'Plese enter a valid email' });
     if (!password)
-        return res.status(400).json({ mssg: 'Invalid password please enter a valid password' });
+        return res.status(400).json({ mssg: 'Password is required' });
 
     // check the role of the user
     if (role === 'admin') {
@@ -82,6 +85,7 @@ exports.login = async (req, res) => {
 
         // get school location
         const wilaya = await db.query('SELECT name FROM wilaya WHERE id = $1', [schoolRow.rows[0].school_wilaya_id]); 
+
         // create token
         const token = jwt.sign({
             id: schoolRow.rows[0].school_id,
@@ -97,6 +101,8 @@ exports.login = async (req, res) => {
             paid: schoolRow.rows[0].school_paid === 'true' ? true : false,
             location: wilaya.rows[0].name,
             students_number: students.rows.length,
+            rate: await require('./rate').getRate(schoolRow.rows[0].school_id),
+            comments: await require('./comments').getComments(schoolRow.rows[0].school_id),
             admin: {
                 name: schoolRow.rows[0].school_admin_name,
                 email: schoolRow.rows[0].school_admin_email,
@@ -108,5 +114,5 @@ exports.login = async (req, res) => {
 
         // return token
         return res.status(200).json({ token });
-    }
+    } else { return res.status(400).json({ mssg: 'Invalid role' }); }
 };
