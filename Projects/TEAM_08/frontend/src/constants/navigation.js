@@ -1,7 +1,7 @@
 export const publicItems = [
-  { title: 'المدارس', path: '/schools' },
-  { title: 'من نحن', path: '#' },
-  { title: 'الخدمات', path: '#' },
-  { title: 'الفريق', path: '#' },
-  { title: 'تواصل معنا', path: '#' },
+  { title: "schools", path: "/schools" },
+  { title: "who-we-are", path: "/who-we-are" },
+  { title: "services", path: "/services" },
+  { title: "team", path: "/team" },
+  { title: "contact-us", path: "#" },
 ];
