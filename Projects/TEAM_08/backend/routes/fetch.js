@@ -9,6 +9,7 @@ router.get('/students/:id', require('../controllers/students').getStudentById);
 router.get('/schools', require('../controllers/schools').getAllSchools);
 router.get('/schools/:id', require('../controllers/schools').getSchoolById);
 router.get('/schools/query', require('../controllers/schools').getSchoolsByQuery);
+router.get('/wilayas', require('../controllers/wilaya').getAllWilayas);
 
 // export router
 module.exports = router;
