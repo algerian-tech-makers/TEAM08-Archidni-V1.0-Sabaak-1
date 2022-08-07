@@ -76,3 +76,55 @@ exports.updateAdminById = async (req, res) => {
         admin: admin.rows[0]
     });
 };
+
+exports.updateSchoolStateById = async (req, res) => {
+    const { token, school_id, state } = req.body;
+
+    // if token not provided
+    if (!token)
+        return res.status(400).json({ mssg: 'Token not provided' });
+
+    // if school_id not provided
+    if (!school_id)
+        return res.status(400).json({ mssg: 'School id not provided' });
+
+    // if state not provided
+    if (!state)
+        return res.status(400).json({ mssg: 'State not provided' });
+
+    // if state is not a boolean
+    if (typeof state !== 'boolean')
+        return res.status(400).json({ mssg: 'State must be a boolean with value true or false' });
+
+    // if state is not true or false
+    if (state !== true && state !== false)
+        return res.status(400).json({ mssg: 'State must be a boolean with value true or false' });
+
+    // check token role
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        if (decoded.role !== 'admin')
+            return res.status(400).json({ mssg: 'Invalid token Please provide a token with admin role' });
+    } catch (err) {
+        return res.status(400).json({
+            mssg: 'Invalid token'
+        });
+    }
+
+    // check if school exist
+    let school;
+    try {
+        school = await db.query('SELECT * FROM schools WHERE school_id = $1', [school_id]);
+    } catch (err) {
+        return res.status(400).json({ mssg: 'School not found' });
+    }
+
+    // chenge state of school
+    try {
+        await db.query('UPDATE schools SET state = $1 WHERE school_id = $1', [state, school_id]);
+    } catch (err) {
+        return res.status(400).json({
+            mssg: err.message
+        });
+    }
+}

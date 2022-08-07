@@ -10,7 +10,7 @@ exports.getAllSchools = async (req, res) => {
       const query = `
          SELECT school_id, open_at, close_at, paid, school_facebook, school_url, school_desc, 
          school_teachers_number, school_phone school_admin_name, school_admin_email, 
-         school_avatar_url, school_name, school_wilaya_id FROM schools`;
+         school_avatar_url, school_name, state, school_wilaya_id FROM schools`;
       const schoolRows = await db.query(query);
 
       // get wilaya name for each school
@@ -47,7 +47,7 @@ exports.getSchoolById = async (req, res) => {
          const query = `
          SELECT school_id, open_at, close_at, paid, school_facebook, school_url, school_desc, 
          school_teachers_number, school_phone school_admin_name, school_admin_email, 
-         school_avatar_url, school_name, school_wilaya_id FROM schools
+         school_avatar_url, school_name, state, school_wilaya_id FROM schools
          WHERE school_id = ${req.params.id}`;
 
          const result = await db.query(query);
@@ -193,6 +193,7 @@ exports.updateSchoolById = async (req, res) => {
             close_at: schoolRow.rows[0].close_at,
             paid: schoolRow.rows[0].school_paid === 'true' ? true : false,
             location: await require('./wilaya').getWilayaById(school_wilaya_id),
+            state: schoolRow.rows[0].state,
             students_number: students.rows.length,
             rate: await require('./rate').getRate(id),
             comments: await require('./comments').getComments(id),

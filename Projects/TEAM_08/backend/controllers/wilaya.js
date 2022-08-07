@@ -2,7 +2,7 @@ const db = require('../modules/db');
 
 
 // API - Fetch all schools
-exports.getAllWilaya = async (req, res) => {
+exports.getAllWilayas = async (req, res) => {
     try {
         const wilayas = await db.query(`SELECT * FROM wilaya`);
         res.status(200).json(wilayas.rows);
