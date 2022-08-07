@@ -23,10 +23,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
-// not verify may get an issue
-// app.use('/api/rate', require('./routes/rate'));
-
 // verify api work with no issue
 app.use('/api/add', (require('./routes/addCR')));
 app.use('/api/update', require('./routes/update'));
