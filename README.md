@@ -1,31 +1,27 @@
-# Sabaak Initiative 💻
+##  المشروع الرابع: أرشدني 
 
-## What is that ❓
-- It is a programming hackathon that will work on a group of mini-projects under the supervision of seniors in the technical field for follow-up and guidance 💪
+ المشروع مُوجّه الى المدارس القرآنية و الراغبين في حفظ كتاب الله. 
+ الكثير ممن يرغبون الانضمام للمدارس القرآنية يبحثون عن المدارس القريبة منهم، كما يهمّهم معرفة كيفية التسجيل ؟ من المُدرّس ؟ و كذا باقي المعلومات الخاصة بالمدرسة و هذا يشكل عائق لمن لا يعرف المدارس الموجودة على مستوى بلديته و معرفة اذا كان التسجيل متاحاً في تلك الفترة أم لا.
 
-## What for 💡
-This initiative is a step toward uniting Muslim programmers from around the world to uphold their faith, make a difference in their societies and reject discrimination and the values imposed by the west through technology.
+## أهم تحديات المشروع: 
+- معرفة المدارس القرآنية القريبة من المستخدمين.
+- تجميعة لأهم المدارس والمقارنة بينها من حيث:
+    - عدد الطلبة.
+    - مكان تواجدها.
+    - مجانية أو مدفوعة…. 
+ - نقص المعلومات الخاصة بكل مدرسة قرآنية (و تشمل معلومات حول كيفية التسجيل و المدرسين المعتمدين فيها )
+- التحقق من حقيقة وجود المدارس القرآنية حقا في الواقع .
 
-## How to contribute 🤝
-- If you have already registered for the initiative , then you can safely skip to **Project Submission**
-- If you didn't register yet, it's not late to do that. You can submit your registration through [this form](forms.google.com)
+## كيف تساهم في تطوير المشروع : 
+- قم برفع المشروع و ملاحظة مدى التقدم 
+- تواصل معنا عبر صفحتنا او عبر الايمايل الخاص بنا للإستفسار  
+- قم بتطوير الحلول الخاص بك و إرسالها لنا ليتم مراجعتها و تطبيقها 
+## سؤال و جواب : 
 
-## Project Submission 📋
-- In order to submit your Draft / Final solution , you will need to meet certain conditions :
-1. The project title must contain the team name + the project name.
-2. Only the team leader can submit the solution on behalf of his team members.
-3. You can submit the solution only once, no duplicates are allowed.
-4. The deadline must be respected , any late submissions won't be accepted.
+### هل يمكنني التغيير في الكود القديم 
+نعم 
+### هل يمكنني البداية في المشروع من جديد
+نعم يمكنك ذلك 
+### هل استطيع ان اضع حلول جديدة و اطور في المشروع اكثر من المطلوب 
+بالتأكيد نعم و يمكنك التواصل معنا لمساعدتك في دراسة الحلول المقترحة منك 
 
-### How to submit ?
-1. Clone this repository.
-2. Create a new folder wih with the desired team name under the `Projects` directory.
-3. Add your solution .
-4. Create a pull request.
-5. Our responsible will review your submission for any issues.
-6. If your submission meets the conditions, the pull request will be merged and reviewd by our Jury.
-
-## Reach out to us 📝
-- If you still have any questions , you can reach out to us through [The Algerian Tech Makers Page](https://www.facebook.com/Algeriantechmakersdz2021)
-
-### Happy Hacking ^_^
